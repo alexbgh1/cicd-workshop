@@ -18,13 +18,12 @@ export class PipelineCdkStack extends Stack {
     // Recupera el secreto de GitHub
     const githubSecret = secretsmanager.Secret.fromSecretNameV2(this, "GitHubSecret", "github/personal_access_token");
 
-    // Crea un proyecto de CodeBuild
-
     // Define el pipeline
     const pipeline = new codepipeline.Pipeline(this, "Pipeline", {
       pipelineName: "CICD_Pipeline",
       crossAccountKeys: false,
     });
+    // Crea un proyecto de CodeBuild
 
     const codeBuild = new codebuild.PipelineProject(this, "CodeBuild", {
       environment: {
