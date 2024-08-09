@@ -8,7 +8,10 @@ const app = new cdk.App();
 
 const ecrCdkStack = new EcrCdkStack(app, "ecr-stack", {});
 
-const testCdkStack = new AppCdkStack(app, "test", {});
+const testCdkStack = new AppCdkStack(app, "test", {
+  // The ECR repository created in the ECR stack is passed to the App stack
+  ecrRepository: ecrCdkStack.repository,
+});
 
 const pipelineCdkStack = new PipelineCdkStack(app, "pipeline-stack", {
   ecrRepository: ecrCdkStack.repository,
