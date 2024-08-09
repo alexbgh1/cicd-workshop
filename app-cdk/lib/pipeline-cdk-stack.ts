@@ -30,7 +30,7 @@ export class PipelineCdkStack extends Stack {
       environment: {
         buildImage: codebuild.LinuxBuildImage.STANDARD_7_0,
         privileged: true,
-        computeType: codebuild.ComputeType.LARGE,
+        computeType: codebuild.ComputeType.SMALL,
       },
       buildSpec: codebuild.BuildSpec.fromSourceFilename("buildspec_test.yml"),
     });
