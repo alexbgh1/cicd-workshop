@@ -166,8 +166,9 @@ export class PipelineCdkStack extends Stack {
       ],
     });
 
-    new CfnOutput(this, "CodeBuildProjectArn", {
-      value: codeBuild.projectArn,
+    new CfnOutput(this, "GitHubRepositoryUrl", {
+      value: "https://github.com/alexbgh1/cicd-workshop",
+      description: "URL del repositorio de GitHub usado como origen",
     });
   }
 }
