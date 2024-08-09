@@ -23,7 +23,7 @@ export class PipelineCdkStack extends Stack {
       pipelineName: "CICD_Pipeline",
       crossAccountKeys: false,
     });
-    // Crea un proyecto de CodeBuild
+    // Crea un proyecto de CodeBuild.
 
     const codeBuild = new codebuild.PipelineProject(this, "CodeBuild", {
       environment: {
