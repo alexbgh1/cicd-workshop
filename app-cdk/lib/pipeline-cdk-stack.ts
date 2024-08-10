@@ -1,7 +1,8 @@
+import * as cdk from "aws-cdk-lib";
 import * as codepipeline from "aws-cdk-lib/aws-codepipeline";
 import * as codepipeline_actions from "aws-cdk-lib/aws-codepipeline-actions";
 import * as codebuild from "aws-cdk-lib/aws-codebuild";
-import * as secretsmanager from "aws-cdk-lib/aws-secretsmanager";
+// import * as secretsmanager from "aws-cdk-lib/aws-secretsmanager";
 import { Construct } from "constructs";
 import * as iam from "aws-cdk-lib/aws-iam";
 import { Stack, StackProps, CfnOutput } from "aws-cdk-lib";
@@ -24,7 +25,8 @@ export class PipelineCdkStack extends Stack {
     super(scope, id, props);
 
     // Recupera el secreto de GitHub
-    const githubSecret = secretsmanager.Secret.fromSecretNameV2(this, "GitHubSecret", "github/personal_access_token");
+    // const githubSecret = secretsmanager.Secret.fromSecretNameV2(this, "GitHubSecret", "github/personal_access_token");
+    const githubSecret = cdk.SecretValue.secretsManager("github/personal_access_token");
 
     // Define el pipeline
     const pipeline = new codepipeline.Pipeline(this, "Pipeline", {
@@ -92,7 +94,7 @@ export class PipelineCdkStack extends Stack {
           owner: "alexbgh1",
           repo: "cicd-workshop",
           branch: "main",
-          oauthToken: githubSecret.secretValue,
+          oauthToken: githubSecret,
           output: sourceOutput,
         }),
       ],
