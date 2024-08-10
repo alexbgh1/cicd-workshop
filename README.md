@@ -6,6 +6,8 @@
 
 > 4.  [**LOCAL**] Verify `app-cdk/pipeline-cdk-stack.ts` to ensure the correct Secret Manager name is being used.
 
+> 5. [**LOCAL**] Verify email and name on `app-cdk/pipeline-cdk-stack.ts` for emailSubscription.
+
 > 5.  [**LOCAL**] Run `cdk deploy pipeline-stack` on the `app-cdk/` directory to deploy the pipeline.
 
 **Note**: If something goes wrong, you can always delete the stack by running `cdk destroy pipeline-stack` on the `app-cdk/` directory, and try again.
